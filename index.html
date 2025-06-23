@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PM Digital Hub - Contact Form</title>
+</head>
+<body>
+  <h2>Contact Us</h2>
+  <form id="myForm">
+    <input type="text" id="name" placeholder="Your Name" required><br><br>
+    <input type="tel" id="phone" placeholder="Phone Number" required><br><br>
+    <textarea id="message" placeholder="Your Message" required></textarea><br><br>
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    const form = document.getElementById("myForm");
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const data = {
+        name: document.getElementById("name").value,
+        phone: document.getElementById("phone").value,
+        message: document.getElementById("message").value
+      };
+
+      await fetch("https://your-backend-name.username.repl.co/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      });
+
+      alert("Thank you! Your message was sent.");
+      form.reset();
+    });
+  </script>
+</body>
+</html>
