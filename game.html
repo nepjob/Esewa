@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lucky Spin Wheel Game</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+      overflow-x: hidden;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    h1 {
+      font-size: 1.2rem;
+      background: rgba(255,255,255,0.1);
+      padding: 10px 15px;
+      border-radius: 8px;
+      display: inline-block;
+      margin-bottom: 2rem;
+    }
+
+    .wheel-container {
+      position: relative;
+      width: 300px;
+      height: 300px;
+      margin: 0 auto;
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+    }
+
+    #wheel {
+      width: 100%;
+      height: 100%;
+      transition: transform 4s ease-out;
+    }
+
+    #spinBtn, #getRewardBtn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border-radius: 30px;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.3s;
+    }
+
+    #spinBtn {
+      background: linear-gradient(45deg, #ff416c, #ff4b2b);
+      color: white;
+    }
+
+    #spinBtn:hover, #getRewardBtn:hover {
+      transform: scale(1.05);
+    }
+
+    #spinBtn:active, #getRewardBtn:active {
+      transform: scale(0.97);
+    }
+
+    #getRewardBtn {
+      background: linear-gradient(45deg, #00c6ff, #0072ff);
+      color: white;
+      display: none;
+    }
+
+    #result {
+      margin-top: 25px;
+      font-size: 1.2rem;
+    }
+
+    .particle {
+      position: absolute;
+      background: rgba(255,255,255,0.7);
+      border-radius: 50%;
+      animation: float 6s infinite ease-in-out;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .wheel-container {
+        width: 250px;
+        height: 250px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>नोट: तपाईले जित्नुभयो भने स्क्रिनसट लिनुहोस्।</h1>
+
+  <div class="wheel-container">
+    <canvas id="wheel"></canvas>
+  </div>
+
+  <button id="spinBtn">Spin Now</button>
+
+  <div id="result"></div>
+  <button id="getRewardBtn">Get Reward</button>
+
+  <script>
+    const canvas = document.getElementById('wheel');
+    const ctx = canvas.getContext('2d');
+    const size = canvas.width = canvas.height = 300;
+
+    const prizes = [
+      "Ncell Recharge Rs.250",
+      "Esewa Money Rs.300",
+      "iPhone 15",
+      "Bike",
+      "Guitar",
+      "Mystery Box"
+    ];
+
+    const colors = ["#FF6B6B", "#FFD93D", "#6BCB77", "#4D96FF", "#FF6BD6", "#B28DFF"];
+
+    const spinBtn = document.getElementById("spinBtn");
+    const result = document.getElementById("result");
+    const getRewardBtn = document.getElementById("getRewardBtn");
+
+    let spinning = false;
+    let wonPrize = "";
+
+    function drawWheel() {
+      const arc = (2 * Math.PI) / prizes.length;
+      for (let i = 0; i < prizes.length; i++) {
+        ctx.beginPath();
+        ctx.fillStyle = colors[i];
+        ctx.moveTo(size/2, size/2);
+        ctx.arc(size/2, size/2, size/2, arc * i, arc * (i + 1));
+        ctx.lineTo(size/2, size/2);
+        ctx.fill();
+
+        // Add text
+        ctx.save();
+        ctx.translate(size/2, size/2);
+        ctx.rotate(arc * i + arc / 2);
+        ctx.textAlign = "right";
+        ctx.fillStyle = "white";
+        ctx.font = "bold 12px Poppins";
+        ctx.fillText(prizes[i], size/2 - 10, 5);
+        ctx.restore();
+      }
+    }
+
+    drawWheel();
+
+    spinBtn.addEventListener("click", () => {
+      if (localStorage.getItem("spun")) {
+        alert("You have already spun the wheel!");
+        return;
+      }
+      if (spinning) return;
+
+      spinning = true;
+
+      const prizeIndex = Math.floor(Math.random() * prizes.length);
+      const rotateDeg = 360 * 5 + (360 / prizes.length) * prizeIndex + (360 / prizes.length) / 2;
+      canvas.style.transform = `rotate(${rotateDeg}deg)`;
+
+      setTimeout(() => {
+        wonPrize = prizes[prizeIndex];
+        result.textContent = `🎉 Congratulations! You Won ${wonPrize}`;
+        getRewardBtn.style.display = "inline-block";
+        localStorage.setItem("spun", "true");
+        spinning = false;
+      }, 4000);
+    });
+
+    getRewardBtn.addEventListener("click", () => {
+      const phone = "9779704888854"; // ✅ Replace with your WhatsApp number
+      const msg = encodeURIComponent(`Hello, I just won "${wonPrize}" from the Spin Wheel Game. Please verify and send my reward.`);
+      window.location.href = `https://wa.me/${phone}?text=${msg}`;
+    });
+
+    // Optional: Particle effect
+    for (let i = 0; i < 30; i++) {
+      const particle = document.createElement("div");
+      particle.className = "particle";
+      const size = Math.random() * 6 + 4;
+      particle.style.width = size + "px";
+      particle.style.height = size + "px";
+      particle.style.left = Math.random() * 100 + "%";
+      particle.style.top = Math.random() * 100 + "%";
+      particle.style.animationDuration = (Math.random() * 5 + 4) + "s";
+      document.body.appendChild(particle);
+    }
+  </script>
+</body>
+</html>
