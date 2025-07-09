@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bitcoin Investment Nepal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #000;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    .container { max-width: 900px; margin: auto; padding: 20px; }
+
+    .homepage {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    .homepage img {
+      width: 120px;
+      height: auto;
+      margin-bottom: 20px;
+    }
+
+    .homepage h1 {
+      font-size: 1.8rem;
+      color: #ffd700;
+      margin-bottom: 20px;
+    }
+
+    .invest-btn {
+      background-color: #ffd700;
+      color: #000;
+      padding: 12px 25px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    /* Hides the investment site until homepage is hidden */
+    #investment-site {
+      display: none;
+    }
+    h1 { font-size: 1.8rem; color: #ffd700; }
+    .subheading { color: #ccc; margin: 10px 0 20px; }
+    .start-btn {
+      background: #ffd700;
+      color: #000;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .offer, .roi-calculator, .referral, .testimonials, .badges, .btc-widgets, footer {
+      margin-top: 40px;
+      background-color: rgba(255, 255, 255, 0.05);
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    h2 { color: #ffd700; text-align: center; margin-bottom: 10px; }
+    table {
+      width: 100%; margin-top: 15px; border-collapse: collapse; text-align: center;
+    }
+    th, td {
+      padding: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+    th { background-color: rgba(255, 215, 0, 0.1); }
+
+    input[type="number"] {
+      width: 80%; max-width: 300px;
+      padding: 10px;
+      border-radius: 5px;
+      margin: 10px 0;
+      border: none;
+    }
+
+    button.calc-btn {
+      padding: 10px 20px;
+      background: #ffd700;
+      color: #000;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #timer {
+      font-size: 2rem;
+      text-align: center;
+      margin-top: 10px;
+      color: #ff6961;
+    }
+
+    .testimonial {
+      background: rgba(255,255,255,0.1);
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 8px;
+      font-size: 0.95rem;
+    }
+
+    .badges img {
+      height: 40px;
+      margin: 10px;
+    }
+
+    #growthChart {
+      margin-top: 40px;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      background: rgba(255,255,255,0.05);
+      margin-top: 40px;
+      padding: 20px;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25D366;
+      color: #fff;
+      padding: 12px;
+      border-radius: 50%;
+      font-size: 24px;
+      text-align: center;
+      z-index: 100;
+    }
+
+    .whatsapp-float:hover {
+      background: #1ebe5d;
+    }
+
+    @media screen and (max-width: 600px) {
+      h1 { font-size: 1.5rem; }
+      .start-btn, .calc-btn { width: 100%; }
+      table { font-size: 0.9rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Homepage -->
+  <div class="homepage" id="homepage">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhp8Tmdtl-RZ_-JLc-y9y88jsCZhaDW-TKuEGDlxGFDVLaUsHVQv_Og-7yX9vEoJtF8LGHbNqvYZFFeXCbuOCWuoP11RqfZLWsY8eOZW9eJL2NNpdw8BHJ7NvCeK3pxPCCnYoBEX43g-PY/s1600/Flag_of_Nepal.gif" alt="Logo GIF"> <!-- Replace with your own GIF URL -->
+    <h1>Welcome To Nep Bit-hub invest Site</h1>
+    <button class="invest-btn" onclick="showInvestmentSite()">Invest Now</button>
+  <!-- Main Investment Site -->
+  </div>
+  <div id="investment-site">
+    <div class="container">
+      <header>
+        <h1>Invest in Bitcoin – Double Your Money</h1>
+        <p class="subheading">Fast. Secure. Trusted in Nepal.</p>
+        <button class="start-btn" onclick="startNow()">Start Now</button>
+      </header>
+
+      <!-- Investment Offers -->
+      <section class="offer">
+        <h2>🔥 Today's Best Offers</h2>
+        <table>
+          <thead>
+            <tr><th>Invest (NPR)</th><th>Return (NPR)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>रु 3,000</td><td>रु 15,000</td></tr>
+            <tr><td>रु 5,000</td><td>रु 30,000</td></tr>
+            <tr><td>रु 10,000</td><td>रु 50,000</td></tr>
+            <tr><td>रु 20,000</td><td>रु 90,000</td></tr>
+            <tr><td>रु 30,000</td><td>रु 1,20,000</td></tr>
+            <tr><td>रु 50,000</td><td>रु 1,50,000+</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ROI Calculator -->
+      <section class="roi-calculator">
+        <h2>📊 Return Calculator</h2>
+        <input type="number" id="investment" placeholder="Enter amount in NPR">
+        <br>
+        <button class="calc-btn" onclick="calculateReturn()">Calculate</button>
+        <p id="returnOutput" style="color: #00ffcc; margin-top: 10px;"></p>
+      </section>
+      <!-- Referral Program -->
+      <section class="referral">
+        <h2>🎁 Referral Program</h2>
+        <p style="text-align:center;">Refer your friends and get 10% bonus on their first investment.</p>
+      </section>
+
+      <!-- Testimonials -->
+      <section class="testimonials">
+        <h2>🌟 What Our Users Say</h2>
+        <div class="testimonial">"I invested just 5,000 and got 30,000 in less than an hour!" – <strong>Ramesh, Kathmandu</strong></div>
+        <div class="testimonial">"Trusted platform! Customer service is excellent." – <strong>Anju, Pokhara</strong></div>
+        <div class="testimonial">"Highly recommended to anyone looking for quick returns!" – <strong>Bibek, Lalitpur</strong></div>
+      </section>
+
+      <!-- Trust Badges -->
+      <section class="badges" style="text-align:center;">
+        <h2>🔐 We’re Trusted</h2>
+        <img src="https://i.imgur.com/Oa1J3cd.png" alt="SSL Secured">
+        <img src="https://i.imgur.com/IcoUtVv.png" alt="Verified">
+        <img src="https://i.imgur.com/oS9zq2Y.png" alt="Trusted Payment">
+      </section>
+
+      <!-- Investor Growth Chart -->
+      <canvas id="growthChart"></canvas>
+
+      <!-- Live BTC Chart -->
+      <section class="btc-widgets">
+        <h2>📈 Live Bitcoin Price</h2>
+        <div id="gobtc-widget-price" data-cur="usd"></div>
+        <div id="gobtc-widget-chart" data-lang="en" data-cur="usd" data-area="1" data-selector="bottom"></div>
+      </section>
+
+      <!-- Footer -->
+      <footer>
+        &copy; 2025 Bitcoin Investment Nepal. All rights reserved.
+      </footer>
+    </div>
+  </div>
+
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/9779704888854?text=I%20want%20to%20invest%20in%20Bitcoin" class="whatsapp-float" target="_blank">💬</a>
+
+  <!-- Scripts -->
+  <script>
+    function showInvestmentSite() {
+      document.getElementById('homepage').style.display = 'none';
+      document.getElementById('investment-site').style.display = 'block';
+    }
+
+    function startNow() {
+      const msg = encodeURIComponent("I want to invest in Bitcoin.");
+      window.location.href = `https://wa.me/9779704888854?text=${msg}`;
+    }
+
+    function calculateReturn() {
+      const investment = parseFloat(document.getElementById("investment").value);
+      let output = "";
+      if (isNaN(investment) || investment <= 0) {
+        output = "Please enter a valid amount.";
+      } else {
+        const estimatedReturn = investment * 5;
+        output = `You will receive approximately रु ${estimatedReturn.toLocaleString()}`;
+      }
+      document.getElementById("returnOutput").innerText = output;
+    }
+
+    // Countdown Timer
+    let time = 5 * 60;
+    const timerElement = document.getElementById("timer");
+    const countdown = setInterval(() => {
+      const minutes = Math.floor(time / 60);
+      const seconds = time % 60;
+      timerElement.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+      time--;
+      if (time < 0) {
+        clearInterval(countdown);
+        timerElement.textContent = "Offer Expired!";
+      }
+    }, 1000);
+
+    // Chart.js Growth Chart
+    window.onload = function() {
+      const ctx = document.getElementById('growthChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+          datasets: [{
+            label: 'Investor Growth in Nepal',
+            data: [100, 300, 800, 1500, 3000, 5000, 8500],
+            borderColor: '#ffd700',
+            backgroundColor: 'rgba(255,215,0,0.2)',
+            borderWidth: 2,
+            tension: 0.4
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { labels: { color: 'white' } }
+          },
+          scales: {
+            y: { ticks: { color: 'white' }, beginAtZero: true },
+            x: { ticks: { color: 'white' } }
+          }
+        }
+      });
+    }
+  </script>
+
+  <!-- BTC Widget Scripts -->
+  <script src="https://widgets.gobitcoin.io/price.js"></script>
+  <script src="https://widgets.gobitcoin.io/chart.js"></script>
+
+</body>
+</html>
