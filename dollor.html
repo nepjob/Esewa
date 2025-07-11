@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Withdraw - Professional UI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    /* Global Styles */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #e0eafc, #cfdef3);
+      animation: backgroundAnimation 20s infinite ease-in-out;
+      color: #333;
+    }
+    @keyframes backgroundAnimation {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      max-width: 500px;
+      margin: 4rem auto;
+      padding: 2rem;
+      background-color: #ffffffee;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin-bottom: 2rem;
+      padding: 0.5rem 1rem;
+      background-color: #f1f1f1;
+      color: #333;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+    .back-btn:hover {
+      background-color: #ddd;
+    }
+
+    h2 {
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .balance-display {
+      display: flex;
+      justify-content: center;
+      align-items: baseline;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .balance-display .usd {
+      font-size: 2.5rem;
+      color: #0ea463;
+      font-weight: 700;
+    }
+    .balance-display small {
+      font-size: 0.95rem;
+      color: #777;
+    }
+
+    .npr-balance {
+      text-align: center;
+      font-weight: 500;
+      margin-bottom: 2rem;
+      color: #555;
+    }
+
+    .withdraw-methods {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .method {
+      padding: 1rem;
+      border: 2px solid #ddd;
+      border-radius: 12px;
+      background-color: #f9f9f9;
+      text-align: center;
+      font-weight: 600;
+      color: #aaa;
+      position: relative;
+      cursor: not-allowed;
+      transition: 0.3s ease;
+    }
+
+    .method.locked::after {
+      content: '🔒';
+      position: absolute;
+      top: 8px;
+      right: 10px;
+      font-size: 1.1rem;
+    }
+
+    .method-logo {
+      width: 50px;
+      height: 50px;
+      margin: 0 auto 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .method-logo img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: 50%;
+      filter: none !important; /* Ensure full color */
+    }
+
+    .method span {
+      display: block;
+      color: #aaa;
+      font-weight: 600;
+    }
+
+    .notice {
+      margin-top: 1.5rem;
+      font-size: 0.95rem;
+      color: #d9534f;
+      text-align: center;
+      font-weight: 500;
+    }
+
+    footer {
+      margin-top: 2rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <button class="back-btn" onclick="history.back()">← Back</button>
+
+    <h2>Your Earnings</h2>
+
+    <div class="balance-display">
+      <div class="usd">Rs 2000.00</div>
+      <small>NPR</small>
+    </div>
+
+    <div class="npr-balance">
+      Your Balance is <strong>NPR Rs. 2,000/-</strong>
+    </div>
+
+    <div class="withdraw-methods">
+      <div class="method locked">
+        <div class="method-logo">
+          <img src="https://raw.githubusercontent.com/nepjob/Esewa/refs/heads/main/esewa_20200118185351%20(1).jpg" alt="Esewa Logo">
+        </div>
+        <span>Esewa</span>
+      </div>
+      <div class="method locked">
+        <div class="method-logo">
+          <img src="https://raw.githubusercontent.com/nepjob/Esewa/refs/heads/main/1674802727434_15aba63e-1877-4b9d-952e-227e23d4c811.png" alt="Khalti Logo">
+        </div>
+        <span>Khalti</span>
+      </div>
+      <div class="method locked">
+        <div class="method-logo">
+          <img src="https://raw.githubusercontent.com/nepjob/Esewa/refs/heads/main/unnamed.png" alt="IMEPay Logo">
+        </div>
+        <span>Imeipay</span>
+      </div>
+      <div class="method locked">
+        <div class="method-logo">
+          <img src="https://raw.githubusercontent.com/nepjob/Esewa/refs/heads/main/bank-icon-logo-design-vector.jpg" alt="Bank Logo">
+        </div>
+        <span>Bank</span>
+      </div>
+      <div class="method locked">
+        <div class="method-logo">
+          <img src="https://raw.githubusercontent.com/nepjob/Esewa/refs/heads/main/6963703.png" alt="Card Logo">
+        </div>
+        <span>Card</span>
+      </div>
+    </div>
+
+    <div class="notice">
+      ⚠️ You will be able to withdraw your money after reaching NPR Rs. 12,000/-
+    </div>
+
+    <footer>
+      Powered by Grow-Up Invest Trading — Secure Withdrawals
+    </footer>
+  </div>
+
+</body>
+</html>
