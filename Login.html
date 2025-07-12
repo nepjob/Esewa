@@ -1,142 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Growme Login</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Growme Login</title>
 
-<!-- Modern Google Font -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
 
-<style>
-  /* Reset and basics */
-  * {
-    box-sizing: border-box;
-  }
-  body, html {
-    height: 100%;
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(270deg, #ff7e5f, #feb47b, #86a8e7, #7f7fd5);
-    background-size: 800% 800%;
-    animation: gradientBG 20s ease infinite;
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-  }
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body, html {
+      height: 100%;
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(270deg, #ff7e5f, #feb47b, #86a8e7, #7f7fd5);
+      background-size: 800% 800%;
+      animation: gradientBG 20s ease infinite;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
 
-  @keyframes gradientBG {
-    0% {background-position: 0% 50%;}
-    50% {background-position: 100% 50%;}
-    100% {background-position: 0% 50%;}
-  }
+    @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
 
-  .container {
-    background: rgba(0,0,0,0.5);
-    border-radius: 16px;
-    padding: 30px 40px;
-    width: 350px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
-    backdrop-filter: blur(10px);
-    position: relative;
-    transition: opacity 0.4s ease, transform 0.4s ease;
-  }
+    .container {
+      background: rgba(0,0,0,0.5);
+      border-radius: 16px;
+      padding: 30px 40px;
+      width: 350px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+      backdrop-filter: blur(10px);
+      position: relative;
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
 
-  h2 {
-    margin-bottom: 25px;
-    font-weight: 600;
-    font-size: 1.8rem;
-    letter-spacing: 1.2px;
-  }
+    h2 {
+      margin-bottom: 25px;
+      font-weight: 600;
+      font-size: 1.8rem;
+      letter-spacing: 1.2px;
+    }
 
-  input[type="text"], input[type="password"] {
-    width: 100%;
-    padding: 14px 16px;
-    margin-bottom: 20px;
-    border-radius: 10px;
-    border: none;
-    outline: none;
-    font-size: 1rem;
-    transition: box-shadow 0.3s ease;
-  }
+    input[type="text"], input[type="password"] {
+      width: 100%;
+      padding: 14px 16px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+      transition: box-shadow 0.3s ease;
+    }
 
-  input[type="text"]:focus, input[type="password"]:focus {
-    box-shadow: 0 0 8px 2px #00c6ff;
-  }
+    input[type="text"]:focus, input[type="password"]:focus {
+      box-shadow: 0 0 8px 2px #00c6ff;
+    }
 
-  button {
-    width: 100%;
-    padding: 14px 0;
-    margin-top: 10px;
-    border-radius: 12px;
-    border: none;
-    font-weight: 600;
-    font-size: 1.1rem;
-    cursor: pointer;
-    color: white;
-    background: linear-gradient(90deg, #00c6ff, #0072ff);
-    transition: background 0.3s ease;
-  }
+    button {
+      width: 100%;
+      padding: 14px 0;
+      margin-top: 10px;
+      border-radius: 12px;
+      border: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      cursor: pointer;
+      color: white;
+      background: linear-gradient(90deg, #00c6ff, #0072ff);
+      transition: background 0.3s ease;
+    }
 
-  button:hover {
-    background: linear-gradient(90deg, #0072ff, #00c6ff);
-  }
+    button:hover {
+      background: linear-gradient(90deg, #0072ff, #00c6ff);
+    }
 
-  .btn-secondary {
-    background: transparent;
-    border: 2px solid white;
-    margin-top: 15px;
-  }
-  .btn-secondary:hover {
-    background: white;
-    color: #0072ff;
-    border-color: #0072ff;
-  }
+    .btn-secondary {
+      background: transparent;
+      border: 2px solid white;
+      margin-top: 15px;
+    }
 
-  .back-button {
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    background: transparent;
-    border: none;
-    color: #fff;
-    font-size: 1.5rem;
-    cursor: pointer;
-    transition: color 0.3s ease;
-  }
-  .back-button:hover {
-    color: #00c6ff;
-  }
+    .btn-secondary:hover {
+      background: white;
+      color: #0072ff;
+      border-color: #0072ff;
+    }
 
-  .sticker {
-    font-size: 3rem;
-    margin-bottom: 18px;
-  }
+    .back-button {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: transparent;
+      border: none;
+      color: #fff;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
 
-  /* Hide inactive pages */
-  .hidden {
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(20px);
-    position: absolute;
-  }
-  .visible {
-    opacity: 1;
-    pointer-events: auto;
-    transform: translateY(0);
-    position: relative;
-    transition: opacity 0.4s ease, transform 0.4s ease;
-  }
+    .back-button:hover {
+      color: #00c6ff;
+    }
 
-  /* Message styling */
-  .message {
-    margin-top: 15px;
-    color: #ff4e42;
-    font-weight: 600;
-  }
-</style>
+    .sticker {
+      font-size: 3rem;
+      margin-bottom: 18px;
+    }
+
+    .hidden {
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(20px);
+      position: absolute;
+    }
+
+    .visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+      position: relative;
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .message {
+      margin-top: 15px;
+      color: #ff4e42;
+      font-weight: 600;
+    }
+  </style>
 </head>
 <body>
 
@@ -161,85 +161,68 @@
     <p id="packageMessage" class="message" role="alert" aria-live="polite"></p>
   </section>
 
-<script>
-  // DOM Elements
-  const loginPage = document.getElementById('loginPage');
-  const createAccountPage = document.getElementById('createAccountPage');
-  const loginBtn = document.getElementById('loginBtn');
-  const createAccountBtn = document.getElementById('createAccountBtn');
-  const backBtn = document.getElementById('backBtn');
-  const submitPackageBtn = document.getElementById('submitPackageBtn');
-  const loginMessage = document.getElementById('loginMessage');
-  const packageMessage = document.getElementById('packageMessage');
+  <script>
+    // DOM Elements
+    const loginPage = document.getElementById('loginPage');
+    const createAccountPage = document.getElementById('createAccountPage');
+    const loginBtn = document.getElementById('loginBtn');
+    const createAccountBtn = document.getElementById('createAccountBtn');
+    const backBtn = document.getElementById('backBtn');
+    const submitPackageBtn = document.getElementById('submitPackageBtn');
+    const loginMessage = document.getElementById('loginMessage');
+    const packageMessage = document.getElementById('packageMessage');
 
-  // Hardcoded credentials
-  const validUsername = 'Growme';
-  const validPassword = '@grow4';
+    // Hardcoded credentials
+    const validUsername = 'Growme';
+    const validPassword = '@grow4';
 
-  // Show Create Account page
-  createAccountBtn.addEventListener('click', () => {
-    loginMessage.textContent = '';
-    loginPage.classList.remove('visible');
-    loginPage.classList.add('hidden');
+    // Show Create Account page
+    createAccountBtn.addEventListener('click', () => {
+      loginMessage.textContent = '';
+      loginPage.classList.remove('visible');
+      loginPage.classList.add('hidden');
 
-    createAccountPage.classList.remove('hidden');
-    createAccountPage.classList.add('visible');
-  });
+      createAccountPage.classList.remove('hidden');
+      createAccountPage.classList.add('visible');
+    });
 
-  // Back button to login page
-  backBtn.addEventListener('click', () => {
-    packageMessage.textContent = '';
-    createAccountPage.classList.remove('visible');
-    createAccountPage.classList.add('hidden');
+    // Back to Login
+    backBtn.addEventListener('click', () => {
+      packageMessage.textContent = '';
+      createAccountPage.classList.remove('visible');
+      createAccountPage.classList.add('hidden');
 
-    loginPage.classList.remove('hidden');
-    loginPage.classList.add('visible');
-  });
+      loginPage.classList.remove('hidden');
+      loginPage.classList.add('visible');
+    });
 
-  // Login logic
-  loginBtn.addEventListener('click', () => {
-    loginMessage.textContent = '';
+    // Login Logic
+    loginBtn.addEventListener('click', () => {
+      loginMessage.textContent = '';
 
-    const username = document.getElementById('loginUsername').value.trim();
-    const password = document.getElementById('loginPassword').value.trim();
+      const username = document.getElementById('loginUsername').value.trim();
+      const password = document.getElementById('loginPassword').value.trim();
 
-    if(username === validUsername && password === validPassword){
-      // Redirect to external Dashboard page
-      window.location.href = 'Dashboard.html';
-    } else {
-      loginMessage.textContent = 'Incorrect Username or Password';
-    }
-  });
+      if(username === validUsername && password === validPassword){
+        window.location.href = 'Dashboard.html';
+      } else {
+        loginMessage.textContent = 'Incorrect Username or Password';
+      }
+    });
 
-  // Create account logic
-  submitPackageBtn.addEventListener('click', () => {
-    packageMessage.textContent = '';
+    // ❌ Reject all package IDs
+    submitPackageBtn.addEventListener('click', () => {
+      packageMessage.style.color = '#ff4e42';
+      packageMessage.textContent = 'Wrong Package ID. Please try again.';
+    });
 
-    const packageId = document.getElementById('packageId').value.trim();
-
-    if(packageId === ''){
-      packageMessage.textContent = 'You must buy a package to create an account.';
-    } else {
-      packageMessage.style.color = '#0f0'; // success green
-      packageMessage.textContent = 'Package ID accepted. You can now create an account!';
-      setTimeout(() => {
-        // Clear package input & message then go back to login
-        document.getElementById('packageId').value = '';
-        packageMessage.textContent = '';
-        packageMessage.style.color = '#ff4e42'; // reset to error color
-
-        backBtn.click();
-      }, 2000);
-    }
-  });
-
-  // Optional: Enter key support for forms
-  document.getElementById('loginPassword').addEventListener('keyup', (e) => {
-    if(e.key === 'Enter') loginBtn.click();
-  });
-  document.getElementById('packageId').addEventListener('keyup', (e) => {
-    if(e.key === 'Enter') submitPackageBtn.click();
-  });
-</script>
+    // Support Enter key
+    document.getElementById('loginPassword').addEventListener('keyup', (e) => {
+      if(e.key === 'Enter') loginBtn.click();
+    });
+    document.getElementById('packageId').addEventListener('keyup', (e) => {
+      if(e.key === 'Enter') submitPackageBtn.click();
+    });
+  </script>
 </body>
 </html>
