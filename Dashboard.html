@@ -5,10 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Modern Dashboard</title>
 <style>
-  /* Import modern font */
   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
-  /* Animated gradient background */
   body, html {
     margin: 0; padding: 0; height: 100%;
     font-family: 'Poppins', sans-serif;
@@ -26,12 +24,10 @@
     100%{background-position:0% 50%}
   }
 
-  /* Smooth transitions */
   * {
     transition: all 0.3s ease;
   }
 
-  /* Container */
   .container {
     max-width: 900px;
     margin: 40px auto;
@@ -41,7 +37,14 @@
     box-shadow: 0 8px 30px rgba(0,0,0,0.5);
   }
 
-  /* Back button */
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ffffff;
+  }
+
   .back-btn {
     display: inline-block;
     margin-bottom: 20px;
@@ -57,14 +60,12 @@
     background: rgba(255,255,255,0.35);
   }
 
-  /* Top bar with dots and dollar */
   .top-bar {
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
 
-  /* 3-dot menu */
   .dot-menu {
     position: relative;
     width: 30px;
@@ -85,7 +86,6 @@
     background: #ff4c4c;
   }
 
-  /* Dollar sign earnings */
   .earnings {
     font-size: 1.8rem;
     font-weight: 700;
@@ -112,7 +112,6 @@
     text-shadow: 0 0 12px #a8e6a1;
   }
 
-  /* Start invest button */
   .btn-invest {
     margin: 30px 0;
     background: #ff6a00;
@@ -130,7 +129,6 @@
     box-shadow: 0 8px 20px rgba(238,85,0,0.7);
   }
 
-  /* Table styles */
   table {
     width: 100%;
     border-collapse: collapse;
@@ -160,7 +158,6 @@
     color: #eee;
   }
 
-  /* Header for the table */
   .offer-header {
     font-size: 1.4rem;
     font-weight: 700;
@@ -169,13 +166,6 @@
     letter-spacing: 1px;
   }
 
-  /* Candles and special icons for offers */
-  .offer-icon {
-    margin-right: 6px;
-    font-size: 1.2rem;
-  }
-
-  /* Footer note */
   .note {
     font-size: 0.9rem;
     color: #ccffcc;
@@ -184,7 +174,6 @@
     margin-top: 10px;
   }
 
-  /* Live charts container */
   .charts {
     display: flex;
     gap: 30px;
@@ -198,7 +187,6 @@
     box-shadow: 0 5px 15px rgba(0,0,0,0.5);
   }
 
-  /* Bitcoin trading ticker */
   .btc-trading {
     background: rgba(255, 255, 255, 0.1);
     padding: 15px 25px;
@@ -216,7 +204,6 @@
     user-select: none;
   }
 
-  /* Level note */
   .level-note {
     background: rgba(50,205,50,0.2);
     color: #32cd32;
@@ -228,7 +215,6 @@
     box-shadow: 0 0 15px #32cd32;
   }
 
-  /* Stickers - example small emoji stickers on bottom right */
   .stickers {
     position: fixed;
     bottom: 20px;
@@ -238,16 +224,105 @@
     pointer-events: none;
     animation: floatStickers 6s ease-in-out infinite;
   }
+
   @keyframes floatStickers {
     0%, 100% { transform: translateY(0);}
     50% { transform: translateY(-10px);}
+  }
+
+  .whatsapp-float {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: #25D366;
+    color: white;
+    font-size: 24px;
+    padding: 14px 16px;
+    border-radius: 50%;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    text-decoration: none;
+    z-index: 999;
+  }
+
+  /* Responsive design for mobile */
+  @media (max-width: 768px) {
+    .container {
+      padding: 20px;
+      margin: 20px 10px;
+    }
+
+    .btn-invest {
+      width: 100%;
+      font-size: 1rem;
+      padding: 12px 20px;
+    }
+
+    table thead tr th,
+    table tbody tr td {
+      font-size: 0.95rem;
+      padding: 10px;
+    }
+
+    .offer-header {
+      font-size: 1.2rem;
+    }
+
+    .btc-trading {
+      font-size: 1rem;
+      flex-direction: column;
+      gap: 10px;
+      text-align: center;
+    }
+
+    canvas {
+      width: 100% !important;
+      height: auto !important;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .btn-invest {
+      font-size: 0.95rem;
+    }
+
+    .offer-header,
+    .note,
+    .level-note {
+      font-size: 1rem;
+    }
+
+    .btc-trading {
+      font-size: 0.9rem;
+    }
+
+    .back-btn {
+      font-size: 0.9rem;
+      padding: 6px 12px;
+    }
+
+    .earnings {
+      font-size: 1.4rem;
+    }
+
+    .earnings::before {
+      font-size: 1.8rem;
+    }
+
+    h1 {
+      font-size: 1.4rem;
+    }
   }
 
 </style>
 </head>
 <body>
 
+<a class="whatsapp-float" href="https://wa.me/9769922786?text=Can%20You%20assist%20me%20For%20Invisting" target="_blank" title="Chat on WhatsApp">💬</a>
+
 <div class="container">
+
+  <h1>Welcome To GrowUp Trading</h1>
 
   <div class="back-btn" onclick="history.back()">← Back</div>
 
@@ -264,10 +339,7 @@
 
   <table>
     <thead>
-      <tr>
-        <th>Investment</th>
-        <th>Profit</th>
-      </tr>
+      <tr><th>Investment</th><th>Profit</th></tr>
     </thead>
     <tbody>
       <tr><td>✅ Invest ₹3000/-</td><td>₹8000/- 📊</td></tr>
@@ -279,30 +351,23 @@
     </tbody>
   </table>
 
-  <div class="note">
-    NOTE : 💵 MONEY WILL BE CREDITED IN YOUR ACCOUNT UNDER 30-45 MINUTES. ✅️
-  </div>
+  <div class="note">NOTE : 💵 MONEY WILL BE CREDITED IN YOUR ACCOUNT UNDER 30-45 MINUTES. ✅️</div>
 
   <div class="charts">
     <canvas id="usersChart" width="400" height="250" title="Live Users & Profit Growth"></canvas>
     <canvas id="btcChart" width="400" height="250" title="Live Bitcoin Trading Rates"></canvas>
   </div>
 
-  <div class="btc-trading" aria-label="Bitcoin Trading Rates">
-    BTC Price: <span id="btcPrice">--</span> USD | Trading Volume: <span id="btcVolume">--</span> | Active Traders: <span id="btcTraders">--</span>
+  <div class="btc-trading">
+    BTC Price: <span id="btcPrice">--</span> USD |
+    Trading Volume: <span id="btcVolume">--</span> |
+    Active Traders: <span id="btcTraders">--</span>
   </div>
 
-  <div class="level-note">
-    Other features will be open after reaching 2nd level.
-  </div>
-
+  <div class="level-note">Other features will be open after reaching 2nd level.</div>
 </div>
 
-<!-- Stickers -->
-<div class="stickers" aria-hidden="true">🚀💰📈</div>
-
 <script>
-  // WhatsApp invest link
   function startInvest() {
     const phone = '9779704888854';
     const message = encodeURIComponent('I want to invest');
@@ -310,16 +375,12 @@
     window.open(url, '_blank');
   }
 
-  // Simulated live data for charts
   const usersCtx = document.getElementById('usersChart').getContext('2d');
   const btcCtx = document.getElementById('btcChart').getContext('2d');
 
-  // Using Chart.js via CDN, create charts dynamically
-  // Load Chart.js library
   const script = document.createElement('script');
   script.src = 'https://cdn.jsdelivr.net/npm/chart.js';
   script.onload = () => {
-    // Data for Users & Profit chart
     const usersData = {
       labels: [],
       datasets: [
@@ -350,13 +411,10 @@
       options: {
         responsive: true,
         animation: { duration: 1000 },
-        scales: {
-          y: { beginAtZero: true }
-        }
+        scales: { y: { beginAtZero: true } }
       }
     });
 
-    // Data for Bitcoin chart
     const btcData = {
       labels: [],
       datasets: [{
@@ -376,23 +434,14 @@
       options: {
         responsive: true,
         animation: { duration: 1000 },
-        scales: {
-          y: { beginAtZero: false }
-        }
+        scales: { y: { beginAtZero: false } }
       }
     });
 
-    // Simulate live updating data
-    let userCount = 100;
-    let profit = 20000;
-    let btcPrice = 29000;
-    let btcVolume = 1200;
-    let btcTraders = 350;
+    let userCount = 100, profit = 20000, btcPrice = 29000, btcVolume = 1200, btcTraders = 350;
 
     function addData() {
       const now = new Date().toLocaleTimeString();
-
-      // Users and profit growth (simulate)
       userCount += Math.floor(Math.random() * 15) + 5;
       profit += Math.floor(Math.random() * 1500) + 500;
 
@@ -406,7 +455,6 @@
       usersData.datasets[1].data.push(profit);
       usersChart.update();
 
-      // BTC price simulation with slight randomness
       btcPrice += (Math.random() - 0.5) * 200;
       btcVolume += Math.floor((Math.random() - 0.5) * 100);
       btcTraders += Math.floor((Math.random() - 0.5) * 20);
@@ -419,16 +467,12 @@
       btcData.datasets[0].data.push(btcPrice.toFixed(2));
       btcChart.update();
 
-      // Update BTC trading ticker integers
       document.getElementById('btcPrice').textContent = btcPrice.toFixed(2);
       document.getElementById('btcVolume').textContent = btcVolume;
       document.getElementById('btcTraders').textContent = btcTraders;
     }
 
-    // Initial fill
     for(let i=0; i<10; i++) addData();
-
-    // Update every 3 seconds
     setInterval(addData, 3000);
   };
 
