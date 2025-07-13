@@ -5,41 +5,43 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Modern Dashboard</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+  * {
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+  }
 
   body, html {
     margin: 0; padding: 0; height: 100%;
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(-45deg, #6a11cb, #2575fc, #ff6a00, #ee7752);
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
     background-size: 400% 400%;
-    animation: gradientBG 20s ease infinite;
-    color: #fff;
+    animation: gradientBG 18s ease infinite;
+    color: #f4f4f4;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
   @keyframes gradientBG {
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
-  }
-
-  * {
-    transition: all 0.3s ease;
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
   }
 
   .container {
     max-width: 900px;
     margin: 40px auto;
-    background: rgba(0,0,0,0.45);
+    background: rgba(255, 255, 255, 0.06);
     padding: 30px 40px;
-    border-radius: 15px;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+    border-radius: 20px;
+    backdrop-filter: blur(14px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
   }
 
   h1 {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     font-size: 2rem;
     font-weight: 700;
     color: #ffffff;
@@ -48,16 +50,17 @@
   .back-btn {
     display: inline-block;
     margin-bottom: 20px;
-    color: #fff;
-    background: rgba(255,255,255,0.15);
-    padding: 8px 14px;
-    border-radius: 8px;
+    color: #e0e0e0;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px 16px;
+    border-radius: 10px;
     cursor: pointer;
     font-weight: 600;
-    user-select: none;
+    backdrop-filter: blur(10px);
   }
+
   .back-btn:hover {
-    background: rgba(255,255,255,0.35);
+    background: rgba(255, 255, 255, 0.2);
   }
 
   .top-bar {
@@ -67,35 +70,36 @@
   }
 
   .dot-menu {
-    position: relative;
-    width: 30px;
-    height: 30px;
+    width: 32px;
+    height: 32px;
     cursor: pointer;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    padding: 4px;
   }
+
   .dot-menu span {
     display: block;
     width: 6px;
     height: 6px;
-    background: #fff;
+    background: #ddd;
     border-radius: 50%;
   }
+
   .dot-menu:hover span {
-    background: #ff4c4c;
+    background: #ff5252;
   }
 
   .earnings {
     font-size: 1.8rem;
     font-weight: 700;
-    color: #32cd32;
+    color: #4caf50;
     cursor: pointer;
-    user-select: none;
     position: relative;
     padding-left: 25px;
-    font-family: 'Poppins', sans-serif;
   }
+
   .earnings::before {
     content: '$';
     position: absolute;
@@ -104,74 +108,81 @@
     transform: translateY(-50%);
     font-size: 2.2rem;
     font-weight: 900;
-    color: #32cd32;
-    text-shadow: 0 0 8px #32cd32;
+    color: #66ff66;
+    text-shadow: 0 0 8px #66ff66;
   }
+
   .earnings:hover {
-    color: #a8e6a1;
-    text-shadow: 0 0 12px #a8e6a1;
+    color: #b6fcb6;
+    text-shadow: 0 0 10px #b6fcb6;
   }
 
   .btn-invest {
-    margin: 30px 0;
-    background: #ff6a00;
+    display: block;
+    margin: 30px auto;
+    background: #00bcd4;
     border: none;
     color: white;
     font-weight: 700;
-    font-size: 1.2rem;
-    padding: 14px 28px;
-    border-radius: 40px;
+    font-size: 1.1rem;
+    padding: 14px 30px;
+    border-radius: 50px;
     cursor: pointer;
-    box-shadow: 0 5px 15px rgba(255,106,0,0.5);
+    box-shadow: 0 6px 18px rgba(0, 188, 212, 0.4);
   }
+
   .btn-invest:hover {
-    background: #ee5500;
-    box-shadow: 0 8px 20px rgba(238,85,0,0.7);
+    background: #0097a7;
+    box-shadow: 0 8px 22px rgba(0, 151, 167, 0.6);
+  }
+
+  .offer-header {
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 15px;
+    color: #fff;
   }
 
   table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 30px;
-    background: rgba(255,255,255,0.1);
-    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
     overflow: hidden;
-  }
-  table thead {
-    background: #2575fc;
-  }
-  table thead tr th {
-    color: white;
-    padding: 15px;
-    font-weight: 700;
-    text-align: left;
-  }
-  table tbody tr {
-    border-bottom: 1px solid rgba(255,255,255,0.15);
-  }
-  table tbody tr:hover {
-    background: rgba(255,255,255,0.15);
-  }
-  table tbody tr td {
-    padding: 12px 15px;
-    font-size: 1rem;
-    color: #eee;
+    margin-bottom: 30px;
   }
 
-  .offer-header {
-    font-size: 1.4rem;
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 15px;
-    letter-spacing: 1px;
+  table thead {
+    background: rgba(0, 188, 212, 0.9);
+  }
+
+  table thead tr th {
+    padding: 14px;
+    font-weight: 600;
+    text-align: left;
+    color: #fff;
+  }
+
+  table tbody tr {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  table tbody tr:hover {
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  table tbody tr td {
+    padding: 12px 16px;
+    font-size: 1rem;
+    color: #e0f7fa;
   }
 
   .note {
-    font-size: 0.9rem;
-    color: #ccffcc;
+    font-size: 0.95rem;
+    color: #d4fcd4;
     font-weight: 600;
     text-align: center;
-    margin-top: 10px;
   }
 
   .charts {
@@ -181,53 +192,37 @@
     justify-content: center;
     margin-bottom: 30px;
   }
+
   canvas {
-    background: rgba(0,0,0,0.2);
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
   }
 
   .btc-trading {
     background: rgba(255, 255, 255, 0.1);
-    padding: 15px 25px;
-    border-radius: 20px;
-    font-size: 1.2rem;
+    padding: 16px 24px;
+    border-radius: 14px;
+    font-size: 1.1rem;
     font-weight: 600;
-    color: #f7931a;
-    margin-bottom: 25px;
-    box-shadow: 0 0 15px #f7931a;
+    color: #ff9800;
+    box-shadow: 0 0 12px #ff9800;
     display: flex;
     justify-content: center;
-    align-items: center;
-    gap: 15px;
-    font-family: 'Courier New', monospace;
-    user-select: none;
+    gap: 20px;
+    flex-wrap: wrap;
+    font-family: monospace;
   }
 
   .level-note {
-    background: rgba(50,205,50,0.2);
-    color: #32cd32;
-    padding: 15px 20px;
-    border-radius: 15px;
+    background: rgba(76, 175, 80, 0.2);
+    color: #76ff03;
+    padding: 16px;
+    border-radius: 14px;
     font-weight: 700;
     text-align: center;
     font-size: 1rem;
-    box-shadow: 0 0 15px #32cd32;
-  }
-
-  .stickers {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    font-size: 2rem;
-    user-select: none;
-    pointer-events: none;
-    animation: floatStickers 6s ease-in-out infinite;
-  }
-
-  @keyframes floatStickers {
-    0%, 100% { transform: translateY(0);}
-    50% { transform: translateY(-10px);}
+    box-shadow: 0 0 10px #76ff03;
   }
 
   .whatsapp-float {
@@ -239,13 +234,25 @@
     font-size: 24px;
     padding: 14px 16px;
     border-radius: 50%;
-    text-align: center;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.3);
     text-decoration: none;
     z-index: 999;
   }
 
-  /* Responsive design for mobile */
+  .stickers {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 2rem;
+    pointer-events: none;
+    animation: floatStickers 6s ease-in-out infinite;
+  }
+
+  @keyframes floatStickers {
+    0%, 100% { transform: translateY(0);}
+    50% { transform: translateY(-10px);}
+  }
+
   @media (max-width: 768px) {
     .container {
       padding: 20px;
@@ -258,65 +265,52 @@
       padding: 12px 20px;
     }
 
-    table thead tr th,
-    table tbody tr td {
-      font-size: 0.95rem;
-      padding: 10px;
-    }
-
-    .offer-header {
-      font-size: 1.2rem;
-    }
-
-    .btc-trading {
-      font-size: 1rem;
-      flex-direction: column;
-      gap: 10px;
-      text-align: center;
-    }
-
     canvas {
       width: 100% !important;
       height: auto !important;
     }
+
+    .btc-trading {
+      font-size: 0.95rem;
+      flex-direction: column;
+      text-align: center;
+      gap: 10px;
+    }
   }
 
   @media (max-width: 480px) {
+    h1 {
+      font-size: 1.4rem;
+    }
+
+    .back-btn,
+    .earnings {
+      font-size: 0.9rem;
+    }
+
+    .earnings::before {
+      font-size: 1.5rem;
+    }
+
     .btn-invest {
       font-size: 0.95rem;
     }
 
-    .offer-header,
-    .note,
-    .level-note {
-      font-size: 1rem;
-    }
-
-    .btc-trading {
-      font-size: 0.9rem;
-    }
-
-    .back-btn {
-      font-size: 0.9rem;
-      padding: 6px 12px;
-    }
-
-    .earnings {
-      font-size: 1.4rem;
-    }
-
-    .earnings::before {
-      font-size: 1.8rem;
-    }
-
-    h1 {
-      font-size: 1.4rem;
+    .note, .offer-header, .level-note {
+      font-size: 0.95rem;
     }
   }
-
 </style>
 </head>
 <body>
+<!-- Body remains unchanged, same HTML and JS functionality -->
+   <div class="container">
+
+  <div style="text-align: center; margin-bottom: 20px;">
+    <img src="https://raw.githubusercontent.com/nepjob/Esewa/refs/heads/main/1752413014861.png" alt="GrowUp Logo" style="max-width: 120px;">
+  </div>
+
+  <h1>Welcome To GrowUp Trading</h1>
 
 <a class="whatsapp-float" href="https://wa.me/9769922786?text=Can%20You%20assist%20me%20For%20Invisting" target="_blank" title="Chat on WhatsApp">💬</a>
 
@@ -342,13 +336,12 @@
       <tr><th>Investment</th><th>Profit</th></tr>
     </thead>
     <tbody>
-      <tr><td>✅ Invest ₹3000/-</td><td>₹7990/- 📊</td></tr>
+      <tr><td>✅ Invest ₹3000/-</td><td>₹7660/- 📊</td></tr>
       <tr><td>✅ Invest ₹7500/-</td><td>₹17950/- 📊</td></tr>
-      <tr><td>✅ Invest ₹10000/-</td><td>₹95110/- 📊</td></tr>
-      <tr><td>✅ Invest ₹20000/-</td><td>₹98,000/- 📊</td></tr>
-      <tr><td>✅ Invest ₹30000/-</td><td>₹810000/- 📊</td></tr>
-      <tr><td>✅ Invest ₹50000/-</td><td>₹Service Closed... 📊</td></tr>
-      <tr><tr>✅️ This Offer Will Be Closed at 6:00 PM </td></tr>
+      <tr><td>✅ Invest ₹10000/-</td><td>₹240000/- 📊</td></tr>
+      <tr><td>✅ Invest ₹20000/-</td><td>₹90,000/- 📊</td></tr>
+      <tr><td>✅ Invest ₹30000/-</td><td>₹120000/- 📊</td></tr>
+      <tr><td>✅ Invest ₹50000/-</td><td>₹1.5 lac... 📊</td></tr>
     </tbody>
   </table>
 
