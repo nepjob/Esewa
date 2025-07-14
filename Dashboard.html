@@ -239,20 +239,6 @@
     z-index: 999;
   }
 
-  .stickers {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    font-size: 2rem;
-    pointer-events: none;
-    animation: floatStickers 6s ease-in-out infinite;
-  }
-
-  @keyframes floatStickers {
-    0%, 100% { transform: translateY(0);}
-    50% { transform: translateY(-10px);}
-  }
-
   @media (max-width: 768px) {
     .container {
       padding: 20px;
@@ -303,8 +289,8 @@
 </style>
 </head>
 <body>
-<!-- Body remains unchanged, same HTML and JS functionality -->
-   <div class="container">
+
+<div class="container">
 
   <div style="text-align: center; margin-bottom: 20px;">
     <img src="https://raw.githubusercontent.com/nepjob/Esewa/refs/heads/main/1752413014861.png" alt="GrowUp Logo" style="max-width: 120px;">
@@ -312,51 +298,60 @@
 
   <h1>Welcome To GrowUp Trading</h1>
 
-<a class="whatsapp-float" href="https://wa.me/9769922786?text=Can%20You%20assist%20me%20For%20Invisting" target="_blank" title="Chat on WhatsApp">💬</a>
+  <a class="whatsapp-float" href="https://wa.me/9769922786?text=Can%20You%20assist%20me%20For%20Invisting" target="_blank" title="Chat on WhatsApp">💬</a>
 
-<div class="container">
+  <div class="container">
 
-  <h1>Invest now and Get Your Profit</h1>
+    <h1>Invest now and Get Your Profit</h1>
 
-  <div class="back-btn" onclick="history.back()">← Back</div>
+    <div class="back-btn" onclick="history.back()">← Back</div>
 
-  <div class="top-bar">
-    <div class="dot-menu" title="Menu (3 dots)" onclick="location.href='3dot.html'">
-      <span></span><span></span><span></span>
+    <div class="top-bar">
+      <div class="dot-menu" title="Menu (3 dots)" onclick="location.href='3dot.html'">
+        <span></span><span></span><span></span>
+      </div>
+      <div class="earnings" title="Your Earnings" onclick="location.href='dollor.html'">$</div>
     </div>
-    <div class="earnings" title="Your Earnings" onclick="location.href='dollor.html'">$</div>
+
+    <button class="btn-invest" onclick="startInvest()">Start invest now</button>
+
+    <div class="offer-header">🕯𝐓𝐎𝐃𝐀𝐘 𝐁𝐄𝐒𝐓 𝐒𝐏𝐄𝐂𝐈𝐀𝐋 𝐎𝐅𝐅𝐄𝐑 🕯</div>
+
+    <!-- ✅ Special Offer Sticker GIF -->
+    <div style="text-align: center; margin-bottom: 20px;">
+      <img src="https://media1.giphy.com/media/v1.Y2lkPTZjMDliOTUyZm94MHdpbTB3YjY3NGl3YTdtNmVybG9lbWlncnY0eThrZno0Y3I4MCZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/sgTMINOA908LfcmUWh/source.gif" 
+           alt="Special Offer - Until 10AM" 
+           style="max-width: 160px; border-radius: 12px; box-shadow: 0 4px 20px rgba(255,255,255,0.3);" />
+      <div style="margin-top: 8px; font-weight: 700; color: #ffeb3b;">Offer valid till 10:00 AM ⏰</div>
+    </div>
+
+    <table>
+      <thead>
+        <tr><th>Investment</th><th>Profit</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>✅ Invest ₹4100/-</td><td>₹8560/- 📊USDT</td></tr>
+        <tr><td>✅ Invest ₹10000/-</td><td>₹89950/- 📊USDT</td></tr>
+        <tr><td>✅ Invest ₹30000/-</td><td>₹99000/- 📊BNB</td></tr>
+        <tr><td>✅ Invest ₹80000/-</td><td>₹150,000/- 📊BTC</td></tr>
+      </tbody>
+    </table>
+
+    <div class="note">NOTE : 💵 MONEY WILL BE CREDITED IN YOUR ACCOUNT UNDER 30-45 MINUTES. ✅️</div>
+
+    <div class="charts">
+      <canvas id="usersChart" width="400" height="250" title="Live Users & Profit Growth"></canvas>
+      <canvas id="btcChart" width="400" height="250" title="Live Bitcoin Trading Rates"></canvas>
+    </div>
+
+    <div class="btc-trading">
+      BTC Price: <span id="btcPrice">--</span> USD |
+      Trading Volume: <span id="btcVolume">--</span> |
+      Active Traders: <span id="btcTraders">--</span>
+    </div>
+
+    <div class="level-note">Other features will be open after reaching 2nd level.</div>
   </div>
-
-  <button class="btn-invest" onclick="startInvest()">Start invest now</button>
-
-  <div class="offer-header">🕯𝐓𝐎𝐃𝐀𝐘 𝐁𝐄𝐒𝐓 𝐒𝐏𝐄𝐂𝐈𝐀𝐋 𝐎𝐅𝐅𝐄𝐑 🕯</div>
-
-  <table>
-    <thead>
-      <tr><th>Investment</th><th>Profit</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>✅ Invest ₹4100/-</td><td>₹8560/- 📊USDT</td></tr>
-      <tr><td>✅ Invest ₹10000/-</td><td>₹89950/- 📊USDT</td></tr>
-      <tr><td>✅ Invest ₹30000/-</td><td>₹99000/- 📊BNB</td></tr>
-      <tr><td>✅ Invest ₹80000/-</td><td>₹150,000/- 📊BTC</td></tr>
-    </tbody>
-  </table>
-
-  <div class="note">NOTE : 💵 MONEY WILL BE CREDITED IN YOUR ACCOUNT UNDER 30-45 MINUTES. ✅️</div>
-
-  <div class="charts">
-    <canvas id="usersChart" width="400" height="250" title="Live Users & Profit Growth"></canvas>
-    <canvas id="btcChart" width="400" height="250" title="Live Bitcoin Trading Rates"></canvas>
-  </div>
-
-  <div class="btc-trading">
-    BTC Price: <span id="btcPrice">--</span> USD |
-    Trading Volume: <span id="btcVolume">--</span> |
-    Active Traders: <span id="btcTraders">--</span>
-  </div>
-
-  <div class="level-note">Other features will be open after reaching 2nd level.</div>
 </div>
 
 <script>
