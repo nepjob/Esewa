@@ -69,52 +69,30 @@
     justify-content: space-between;
   }
 
-  .dot-menu {
-    width: 32px;
-    height: 32px;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 4px;
-  }
-
-  .dot-menu span {
-    display: block;
-    width: 6px;
-    height: 6px;
-    background: #ddd;
-    border-radius: 50%;
-  }
-
-  .dot-menu:hover span {
-    background: #ff5252;
-  }
-
+  /* Replaced dot-menu styles with earnings button styles */
   .earnings {
-    font-size: 1.8rem;
+    font-size: 1.4rem;
     font-weight: 700;
     color: #4caf50;
     cursor: pointer;
-    position: relative;
-    padding-left: 25px;
-  }
-
-  .earnings::before {
-    content: '$';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 2.2rem;
-    font-weight: 900;
-    color: #66ff66;
-    text-shadow: 0 0 8px #66ff66;
+    border: none;
+    background: transparent;
+    outline: none;
+    padding: 8px 16px;
+    border-radius: 12px;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+    user-select: none;
+    display: inline-block;
   }
 
   .earnings:hover {
     color: #b6fcb6;
     text-shadow: 0 0 10px #b6fcb6;
+  }
+
+  /* Remove the dollar sign pseudo element */
+  .earnings::before {
+    content: none;
   }
 
   .btn-invest {
@@ -274,10 +252,6 @@
       font-size: 0.9rem;
     }
 
-    .earnings::before {
-      font-size: 1.5rem;
-    }
-
     .btn-invest {
       font-size: 0.95rem;
     }
@@ -307,10 +281,8 @@
     <div class="back-btn" onclick="history.back()">← Back</div>
 
     <div class="top-bar">
-      <div class="dot-menu" title="Menu (3 dots)" onclick="location.href='3dot.html'">
-        <span></span><span></span><span></span>
-      </div>
-      <div class="earnings" title="Your Earnings" onclick="location.href='dollor.html'">$</div>
+      <button class="earnings" title="Rewards Button" onclick="location.href='3dot.html'">Rewards</button>
+      <div class="earnings" title="Your Rewards" onclick="location.href='dollor.html'">$Balance</div>
     </div>
 
     <button class="btn-invest" onclick="startInvest()">Start invest now</button>
@@ -332,7 +304,7 @@
       <tbody>
         <tr><td>✅ Invest ₹3000/-</td><td>₹7560/- 📊USDT</td></tr>
         <tr><td>✅ Invest ₹5000/-</td><td>₹12000/- 📊USDT</td></tr>
-        <tr><td>✅ Invest ₹10000/-</td><td>₹90950/- 📊BNB (only for level 1 users)</td></tr>
+        <tr><td>✅ Invest ₹10000/-</td><td>₹81950/- 📊BNB (only for level 1 users)</td></tr>
         <tr><td>✅ Invest ₹30000/-</td><td>₹99000/- 📊BNB</td></tr>
         <tr><td>✅ Invest ₹80000/-</td><td>₹150,000/- 📊BTC</td></tr>
       </tbody>
@@ -366,102 +338,70 @@
   const usersCtx = document.getElementById('usersChart').getContext('2d');
   const btcCtx = document.getElementById('btcChart').getContext('2d');
 
+  // Simulate charts with Chart.js CDN from CDN (please add your own script tag if you want real charts)
+  // For demo: simple line chart for users & profit growth
+  // Since no CDN link was included, let's add it dynamically here:
   const script = document.createElement('script');
   script.src = 'https://cdn.jsdelivr.net/npm/chart.js';
   script.onload = () => {
-    const usersData = {
-      labels: [],
-      datasets: [
-        {
-          label: 'Users',
-          data: [],
-          borderColor: 'rgba(50,205,50,0.8)',
-          backgroundColor: 'rgba(50,205,50,0.3)',
-          fill: true,
-          tension: 0.3,
-          pointRadius: 3,
-        },
-        {
-          label: 'Profit (₹)',
-          data: [],
-          borderColor: 'rgba(32, 117, 252, 0.8)',
-          backgroundColor: 'rgba(32, 117, 252, 0.3)',
-          fill: true,
-          tension: 0.3,
-          pointRadius: 3,
-        }
-      ]
-    };
-
     const usersChart = new Chart(usersCtx, {
       type: 'line',
-      data: usersData,
+      data: {
+        labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6'],
+        datasets: [{
+          label: 'Users',
+          data: [5, 15, 40, 55, 70, 80],
+          borderColor: '#4caf50',
+          backgroundColor: 'rgba(76, 175, 80, 0.3)',
+          fill: true,
+          tension: 0.3,
+          pointRadius: 4
+        },
+        {
+          label: 'Profit',
+          data: [2, 10, 25, 40, 50, 60],
+          borderColor: '#00bcd4',
+          backgroundColor: 'rgba(0, 188, 212, 0.3)',
+          fill: true,
+          tension: 0.3,
+          pointRadius: 4
+        }]
+      },
       options: {
         responsive: true,
-        animation: { duration: 1000 },
-        scales: { y: { beginAtZero: true } }
+        plugins: { legend: { labels: { color: '#f4f4f4' } } },
+        scales: {
+          x: { ticks: { color: '#eee' } },
+          y: { ticks: { color: '#eee' }, beginAtZero: true }
+        }
       }
     });
 
-    const btcData = {
-      labels: [],
-      datasets: [{
-        label: 'BTC Price (USD)',
-        data: [],
-        borderColor: '#f7931a',
-        backgroundColor: 'rgba(247, 147, 26, 0.3)',
-        fill: true,
-        tension: 0.25,
-        pointRadius: 2,
-      }]
-    };
-
+    // Bitcoin trading rates chart (bar chart)
     const btcChart = new Chart(btcCtx, {
-      type: 'line',
-      data: btcData,
+      type: 'bar',
+      data: {
+        labels: ['BTC Price', 'Trading Volume', 'Active Traders'],
+        datasets: [{
+          label: 'Value',
+          data: [30000, 45000, 2000],
+          backgroundColor: ['#ff9800', '#ffc107', '#ff5722']
+        }]
+      },
       options: {
         responsive: true,
-        animation: { duration: 1000 },
-        scales: { y: { beginAtZero: false } }
+        plugins: { legend: { display: false } },
+        scales: {
+          x: { ticks: { color: '#f4f4f4' } },
+          y: { ticks: { color: '#f4f4f4' }, beginAtZero: true }
+        }
       }
     });
 
-    let userCount = 100, profit = 20000, btcPrice = 29000, btcVolume = 1200, btcTraders = 350;
-
-    function addData() {
-      const now = new Date().toLocaleTimeString();
-      userCount += Math.floor(Math.random() * 15) + 5;
-      profit += Math.floor(Math.random() * 1500) + 500;
-
-      if(usersData.labels.length > 20){
-        usersData.labels.shift();
-        usersData.datasets[0].data.shift();
-        usersData.datasets[1].data.shift();
-      }
-      usersData.labels.push(now);
-      usersData.datasets[0].data.push(userCount);
-      usersData.datasets[1].data.push(profit);
-      usersChart.update();
-
-      btcPrice += (Math.random() - 0.5) * 200;
-      btcVolume += Math.floor((Math.random() - 0.5) * 100);
-      btcTraders += Math.floor((Math.random() - 0.5) * 20);
-
-      if(btcData.labels.length > 20){
-        btcData.labels.shift();
-        btcData.datasets[0].data.shift();
-      }
-      btcData.labels.push(now);
-      btcData.datasets[0].data.push(btcPrice.toFixed(2));
-      btcChart.update();
-
-      document.getElementById('btcPrice').textContent = btcPrice.toFixed(2);
-      document.getElementById('btcVolume').textContent = btcVolume;
-      document.getElementById('btcTraders').textContent = btcTraders;
-    }
-
-    for(let i=0; i<10; i++) addData();
-    setInterval(addData, 3000);
+    // Update live data text
+    document.getElementById('btcPrice').textContent = '$30,000';
+    document.getElementById('btcVolume').textContent = '45,000';
+    document.getElementById('btcTraders').textContent = '2,000';
   };
 
   document.head.appendChild(script);
