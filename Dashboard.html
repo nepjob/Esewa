@@ -3,261 +3,310 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Modern Dashboard</title>
+<title>GrowUp Trading Dashboard</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
+  /* Reset & basics */
   * {
     box-sizing: border-box;
-    transition: all 0.3s ease;
   }
 
   body, html {
     margin: 0; padding: 0; height: 100%;
     font-family: 'Inter', sans-serif;
-    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-    background-size: 400% 400%;
-    animation: gradientBG 18s ease infinite;
-    color: #f4f4f4;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    background: #f5f7fa;
+    color: #333;
   }
 
-  @keyframes gradientBG {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-
+  /* Container */
   .container {
-    max-width: 900px;
+    max-width: 960px;
     margin: 40px auto;
-    background: rgba(255, 255, 255, 0.06);
     padding: 30px 40px;
-    border-radius: 20px;
-    backdrop-filter: blur(14px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
   }
 
+  /* Logo center */
+  .logo-container {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .logo-container img {
+    max-width: 120px;
+  }
+
+  /* Titles */
   h1 {
     text-align: center;
-    margin-bottom: 25px;
-    font-size: 2rem;
     font-weight: 700;
-    color: #ffffff;
+    font-size: 2.25rem;
+    margin-bottom: 10px;
+    color: #2c3e50;
   }
 
+  h2 {
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #34495e;
+  }
+
+  /* Back button */
   .back-btn {
     display: inline-block;
-    margin-bottom: 20px;
-    color: #e0e0e0;
-    background: rgba(255, 255, 255, 0.1);
+    margin-bottom: 25px;
     padding: 10px 16px;
-    border-radius: 10px;
-    cursor: pointer;
+    background: #e0e0e0;
+    color: #2c3e50;
+    border-radius: 8px;
     font-weight: 600;
-    backdrop-filter: blur(10px);
+    cursor: pointer;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    transition: background 0.3s ease, color 0.3s ease;
+    user-select: none;
   }
 
   .back-btn:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: #2980b9;
+    color: white;
   }
 
+  /* Top bar - flex */
   .top-bar {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
   }
 
-  /* Replaced dot-menu styles with earnings button styles */
+  /* Earnings buttons */
   .earnings {
-    font-size: 1.4rem;
     font-weight: 700;
-    color: #4caf50;
-    cursor: pointer;
-    border: none;
-    background: transparent;
-    outline: none;
-    padding: 8px 16px;
+    font-size: 1rem;
+    padding: 12px 20px;
     border-radius: 12px;
-    transition: color 0.3s ease, text-shadow 0.3s ease;
-    user-select: none;
-    display: inline-block;
+    border: 2px solid #2980b9;
+    color: #2980b9;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
   }
 
   .earnings:hover {
-    color: #b6fcb6;
-    text-shadow: 0 0 10px #b6fcb6;
+    background: #2980b9;
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(41, 128, 185, 0.5);
   }
 
-  /* Remove the dollar sign pseudo element */
-  .earnings::before {
-    content: none;
-  }
-
+  /* Invest button */
   .btn-invest {
     display: block;
-    margin: 30px auto;
-    background: #00bcd4;
-    border: none;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto 40px;
+    background: #27ae60;
     color: white;
     font-weight: 700;
-    font-size: 1.1rem;
-    padding: 14px 30px;
+    font-size: 1.15rem;
+    padding: 14px 0;
+    border: none;
     border-radius: 50px;
     cursor: pointer;
-    box-shadow: 0 6px 18px rgba(0, 188, 212, 0.4);
+    box-shadow: 0 6px 18px rgba(39, 174, 96, 0.4);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
   }
 
   .btn-invest:hover {
-    background: #0097a7;
-    box-shadow: 0 8px 22px rgba(0, 151, 167, 0.6);
+    background: #219150;
+    box-shadow: 0 8px 22px rgba(33, 145, 80, 0.6);
   }
 
+  /* Offer Header */
   .offer-header {
-    font-size: 1.3rem;
-    font-weight: 700;
     text-align: center;
-    margin-bottom: 15px;
-    color: #fff;
+    font-weight: 700;
+    font-size: 1.3rem;
+    margin-bottom: 25px;
+    color: #e67e22;
+    letter-spacing: 1.2px;
   }
 
+  /* Special offer image */
+  .special-offer {
+    text-align: center;
+    margin-bottom: 25px;
+  }
+
+  .special-offer img {
+    max-width: 180px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(230, 126, 34, 0.35);
+    user-select: none;
+  }
+
+  .special-offer-text {
+    margin-top: 10px;
+    font-weight: 700;
+    color: #e67e22;
+    font-size: 1rem;
+  }
+
+  /* Table styling */
   table {
     width: 100%;
-    border-collapse: collapse;
-    background: rgba(255, 255, 255, 0.08);
-    border-radius: 10px;
-    overflow: hidden;
+    border-collapse: separate;
+    border-spacing: 0 10px;
     margin-bottom: 30px;
   }
 
-  table thead {
-    background: rgba(0, 188, 212, 0.9);
+  thead tr {
+    background: #2980b9;
+    color: white;
+    border-radius: 12px;
   }
 
-  table thead tr th {
-    padding: 14px;
-    font-weight: 600;
+  thead tr th {
+    padding: 14px 20px;
     text-align: left;
-    color: #fff;
-  }
-
-  table tbody tr {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  table tbody tr:hover {
-    background: rgba(255, 255, 255, 0.05);
-  }
-
-  table tbody tr td {
-    padding: 12px 16px;
-    font-size: 1rem;
-    color: #e0f7fa;
-  }
-
-  .note {
-    font-size: 0.95rem;
-    color: #d4fcd4;
     font-weight: 600;
-    text-align: center;
   }
 
+  tbody tr {
+    background: #ecf0f1;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease;
+    cursor: default;
+    border-radius: 10px;
+  }
+
+  tbody tr:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 18px rgba(41, 128, 185, 0.2);
+  }
+
+  tbody tr td {
+    padding: 14px 20px;
+    color: #2c3e50;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+
+  /* Note text */
+  .note {
+    text-align: center;
+    font-weight: 600;
+    color: #7f8c8d;
+    margin-bottom: 40px;
+  }
+
+  /* Charts container */
   .charts {
     display: flex;
+    justify-content: space-between;
     gap: 30px;
     flex-wrap: wrap;
-    justify-content: center;
-    margin-bottom: 30px;
+    margin-bottom: 35px;
   }
 
   canvas {
-    background: rgba(0, 0, 0, 0.15);
+    flex: 1 1 45%;
+    max-width: 45%;
+    background: #ffffff;
     border-radius: 14px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.07);
+    padding: 20px;
   }
 
+  /* BTC Trading Info */
   .btc-trading {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 16px 24px;
-    border-radius: 14px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: #ff9800;
-    box-shadow: 0 0 12px #ff9800;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    font-family: monospace;
-  }
-
-  .level-note {
-    background: rgba(76, 175, 80, 0.2);
-    color: #76ff03;
-    padding: 16px;
+    background: #f39c12;
+    color: white;
+    padding: 20px 30px;
     border-radius: 14px;
     font-weight: 700;
+    font-size: 1.1rem;
     text-align: center;
-    font-size: 1rem;
-    box-shadow: 0 0 10px #76ff03;
+    box-shadow: 0 0 15px #f39c12;
   }
 
+  /* Level note */
+  .level-note {
+    margin-top: 30px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1rem;
+    color: #27ae60;
+  }
+
+  /* WhatsApp floating button */
   .whatsapp-float {
     position: fixed;
     bottom: 25px;
     right: 25px;
     background: #25D366;
     color: white;
-    font-size: 24px;
-    padding: 14px 16px;
+    font-size: 26px;
+    padding: 16px 18px;
     border-radius: 50%;
     box-shadow: 0 6px 16px rgba(0,0,0,0.3);
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     z-index: 999;
+    transition: background 0.3s ease;
   }
 
+  .whatsapp-float:hover {
+    background: #1ebe57;
+  }
+
+  /* Responsive */
   @media (max-width: 768px) {
     .container {
-      padding: 20px;
-      margin: 20px 10px;
+      margin: 20px 15px;
+      padding: 25px 30px;
     }
 
     .btn-invest {
-      width: 100%;
-      font-size: 1rem;
-      padding: 12px 20px;
+      max-width: 100%;
     }
 
-    canvas {
-      width: 100% !important;
-      height: auto !important;
-    }
-
-    .btc-trading {
-      font-size: 0.95rem;
-      flex-direction: column;
-      text-align: center;
-      gap: 10px;
+    .charts canvas {
+      max-width: 100%;
+      flex-basis: 100%;
     }
   }
 
   @media (max-width: 480px) {
     h1 {
-      font-size: 1.4rem;
+      font-size: 1.6rem;
     }
 
-    .back-btn,
-    .earnings {
+    h2 {
+      font-size: 1.25rem;
+    }
+
+    .back-btn, .earnings {
+      font-size: 0.9rem;
+      padding: 10px 14px;
+    }
+
+    .offer-header {
+      font-size: 1.1rem;
+    }
+
+    .note {
       font-size: 0.9rem;
     }
 
-    .btn-invest {
-      font-size: 0.95rem;
-    }
-
-    .note, .offer-header, .level-note {
-      font-size: 0.95rem;
+    .btc-trading {
+      font-size: 1rem;
+      padding: 16px 20px;
     }
   }
 </style>
@@ -266,35 +315,29 @@
 
 <div class="container">
 
-  <div style="text-align: center; margin-bottom: 20px;">
-    <img src="https://raw.githubusercontent.com/nepjob/Esewa/refs/heads/main/1752413014861.png" alt="GrowUp Logo" style="max-width: 120px;">
+  <div class="logo-container">
+    <img src="https://raw.githubusercontent.com/nepjob/Esewa/refs/heads/main/1752413014861.png" alt="GrowUp Logo" />
   </div>
 
   <h1>Welcome To GrowUp Trading</h1>
 
-  <a class="whatsapp-float" href="https://wa.me/9769922786?text=Can%20You%20assist%20me%20For%20Invisting" target="_blank" title="Chat on WhatsApp">💬</a>
-
-  <div class="container">
-
-    <h1>Invest now and Get Your Profit</h1>
+  <div>
+    <h2>Invest now and Get Your Profit</h2>
 
     <div class="back-btn" onclick="history.back()">← Back</div>
 
     <div class="top-bar">
       <button class="earnings" title="Rewards Button" onclick="location.href='3dot.html'">Rewards</button>
-      <div class="earnings" title="Your Rewards" onclick="location.href='dollor.html'">$Balance</div>
+      <button class="earnings" title="Your Rewards" onclick="location.href='dollor.html'">$Balance</button>
     </div>
 
     <button class="btn-invest" onclick="startInvest()">Start invest now</button>
 
-    <div class="offer-header">🕯𝐓𝐎𝐃𝐀𝐘 𝐁𝐄𝐒𝐓 𝐒𝐏𝐄𝐂𝐈𝐀𝐋 𝐎𝐅𝐅𝐄𝐑 🕯</div>
+    <div class="offer-header">🕯 TODAY'S BEST SPECIAL OFFER 🕯</div>
 
-    <!-- ✅ Special Offer Sticker GIF -->
-    <div style="text-align: center; margin-bottom: 20px;">
-      <img src="https://media1.giphy.com/media/v1.Y2lkPTZjMDliOTUyZm94MHdpbTB3YjY3NGl3YTdtNmVybG9lbWlncnY0eThrZno0Y3I4MCZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/sgTMINOA908LfcmUWh/source.gif" 
-           alt="Special Offer - Until 10AM" 
-           style="max-width: 160px; border-radius: 12px; box-shadow: 0 4px 20px rgba(255,255,255,0.3);" />
-      <div style="margin-top: 8px; font-weight: 700; color: #ffeb3b;">Limited Offer Will Be Changed In 6hr</div>
+    <div class="special-offer">
+      <img src="https://media1.giphy.com/media/v1.Y2lkPTZjMDliOTUyZm94MHdpbTB3YjY3NGl3YTdtNmVybG9lbWlncnY0eThrZno0Y3I4MCZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/sgTMINOA908LfcmUWh/source.gif" alt="Special Offer - Until 10AM" />
+      <div class="special-offer-text">Limited Offer Will Be Changed In 6hr</div>
     </div>
 
     <table>
@@ -302,7 +345,7 @@
         <tr><th>Investment</th><th>Profit</th></tr>
       </thead>
       <tbody>
-        <tr><td>✅ Invest ₹3000/-</td><td>₹7560/- 📊USDT</td></tr>
+        <tr><td>✅ Invest ₹300/-</td><td>₹7560/- 📊USDT</td></tr>
         <tr><td>✅ Invest ₹5000/-</td><td>₹12000/- 📊USDT</td></tr>
         <tr><td>✅ Invest ₹10000/-</td><td>₹81950/- 📊BNB (only for level 1 users)</td></tr>
         <tr><td>✅ Invest ₹30000/-</td><td>₹99000/- 📊BNB</td></tr>
@@ -324,8 +367,11 @@
     </div>
 
     <div class="level-note">Other features will be open after reaching 2nd level.</div>
+
   </div>
 </div>
+
+<a class="whatsapp-float" href="https://wa.me/9769922786?text=Can%20You%20assist%20me%20For%20Invisting" target="_blank" title="Chat on WhatsApp">💬</a>
 
 <script>
   function startInvest() {
@@ -338,9 +384,6 @@
   const usersCtx = document.getElementById('usersChart').getContext('2d');
   const btcCtx = document.getElementById('btcChart').getContext('2d');
 
-  // Simulate charts with Chart.js CDN from CDN (please add your own script tag if you want real charts)
-  // For demo: simple line chart for users & profit growth
-  // Since no CDN link was included, let's add it dynamically here:
   const script = document.createElement('script');
   script.src = 'https://cdn.jsdelivr.net/npm/chart.js';
   script.onload = () => {
@@ -351,8 +394,8 @@
         datasets: [{
           label: 'Users',
           data: [5, 15, 40, 55, 70, 80],
-          borderColor: '#4caf50',
-          backgroundColor: 'rgba(76, 175, 80, 0.3)',
+          borderColor: '#27ae60',
+          backgroundColor: 'rgba(39, 174, 96, 0.3)',
           fill: true,
           tension: 0.3,
           pointRadius: 4
@@ -360,8 +403,8 @@
         {
           label: 'Profit',
           data: [2, 10, 25, 40, 50, 60],
-          borderColor: '#00bcd4',
-          backgroundColor: 'rgba(0, 188, 212, 0.3)',
+          borderColor: '#2980b9',
+          backgroundColor: 'rgba(41, 128, 185, 0.3)',
           fill: true,
           tension: 0.3,
           pointRadius: 4
@@ -369,15 +412,14 @@
       },
       options: {
         responsive: true,
-        plugins: { legend: { labels: { color: '#f4f4f4' } } },
+        plugins: { legend: { labels: { color: '#34495e' } } },
         scales: {
-          x: { ticks: { color: '#eee' } },
-          y: { ticks: { color: '#eee' }, beginAtZero: true }
+          x: { ticks: { color: '#34495e' } },
+          y: { ticks: { color: '#34495e' }, beginAtZero: true }
         }
       }
     });
 
-    // Bitcoin trading rates chart (bar chart)
     const btcChart = new Chart(btcCtx, {
       type: 'bar',
       data: {
@@ -385,20 +427,19 @@
         datasets: [{
           label: 'Value',
           data: [30000, 45000, 2000],
-          backgroundColor: ['#ff9800', '#ffc107', '#ff5722']
+          backgroundColor: ['#f39c12', '#f1c40f', '#e67e22']
         }]
       },
       options: {
         responsive: true,
         plugins: { legend: { display: false } },
         scales: {
-          x: { ticks: { color: '#f4f4f4' } },
-          y: { ticks: { color: '#f4f4f4' }, beginAtZero: true }
+          x: { ticks: { color: '#34495e' } },
+          y: { ticks: { color: '#34495e' }, beginAtZero: true }
         }
       }
     });
 
-    // Update live data text
     document.getElementById('btcPrice').textContent = '$30,000';
     document.getElementById('btcVolume').textContent = '45,000';
     document.getElementById('btcTraders').textContent = '2,000';
